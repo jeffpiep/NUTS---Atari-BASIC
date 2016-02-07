@@ -1,0 +1,13 @@
+state design ideas
+
+variable to hold horizontal position
+	when stick left (or right)
+		change state var to move left or move right, set target position, swap sprite
+
+		test state var
+			if move left - dec hpos
+			else if move right - inc hpos
+		keep doing this until target position is achieved and reset state var
+		if reset then swap sprite
+		
+		
