@@ -1,3 +1,5 @@
+favorite find: REPEAT: UNTIL PEEK(54283)>95 - avoides flicker. The >95 might have to be tuned.
+
 state design ideas
 
 variable to hold horizontal position
@@ -10,4 +12,26 @@ variable to hold horizontal position
 		keep doing this until target position is achieved and reset state var
 		if reset then swap sprite
 		
-		
+vertical position of birds and nuts
+	problem: when strig climb - vscroll the trees OK
+	also need to move birds and nuts down the screen
+	birds appear at top of screen and scroll down with climbing
+	nuts appear at top of screen and fall normally, faster with climbing?
+
+states
+	end of game
+	rest
+	climb
+	jumping left
+	jumping right
+	got a nut
+	hit a bird
+
+flags or variables
+	nut state, hpos, vpos
+	bird0 states, hpos, vpos
+	bird1 states, hpos, vpos
+	player hpos, tree (sprite mirror)
+	score, time
+	
+	
