@@ -18,6 +18,9 @@ vertical position of birds and nuts
 	birds appear at top of screen and scroll down with climbing
 	nuts appear at top of screen and fall normally, faster with climbing?
 
+scrolling of sprite onto playfield
+	
+	
 states
 	end of game
 	rest
@@ -26,7 +29,9 @@ states
 	jumping right
 	got a nut
 	hit a bird
-
+	there's a bird
+	there's a nut
+	
 flags or variables
 	nut state, hpos, vpos
 	bird0 states, hpos, vpos
