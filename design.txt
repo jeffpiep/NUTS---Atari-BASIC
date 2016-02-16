@@ -19,6 +19,13 @@ vertical position of birds and nuts
 	nuts appear at top of screen and fall normally, faster with climbing?
 
 scrolling of sprite onto playfield
+	need top and bottom pointers
+	need position counter
+	in MOVE ADR(B$),PM+640+BV,10 do the following
+		ADR(B$) becomes ADR(B$)+top pointer
+		PM+640+BV stays same
+		10 becomes top-bottom pointer+2 BECAUSE WE ARE STEPPING BY 2
+	NEW DESIGN IDEA: only actively scroll down part of screen then just move sprite memory down the screen
 	
 	
 states
