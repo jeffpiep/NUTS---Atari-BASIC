@@ -5,22 +5,25 @@
 40 FOR I=7 TO 18: READ A: POKE DL+I,A: N.I
 41 DATA 39,39,39,39,39,39,39,39,39,39,7,65
 43 PRINT #6;"nuts":PRINT #6;"score:"," time:":FOR X=0 TO 10:?#6;" AAAAAA      AAAAAA":N.X
-45 DIM B$(12):B$(1)=CHR$(0):B$(12)=B$(1):B$(2)=B$:B$(3,10)="12345678"
+45 DIM B$(12):B$(1)=CHR$(0):B$(12)=B$(1):B$(2)=B$:B$(3,11)="12345678"
+46 DIM C$(16):C$(1)=CHR$(0):C$(16)=C$(1):C$(2)=C$:C$(5,12)="87654321"
 
-100 F=0:S=14:H=103 :T=10001:BB=64:B1=12
+100 F=0:S=16:H=103 :T=1001:BB=64:B1=12:CC=1:C1=16
 105 REPEAT
-106 T=T-2:A=STRIG(0):B=PTRIG(0)-PTRIG(1)
-111 IF F=0:F=B:END.
+106 T=T-2:A=2*STRIG(0)
+111 IF F=0:F=PTRIG(0)-PTRIG(1):END.
 120 IF A=0
-121 T=T+1:S=S-4:IF S<0:S=15:ENDIF:-M.PM+640+24,PM+640+26,78
-122 IF BB:B1=B1-2:M. ADR(B$)+B1,PM+640+24+64-BB,2:BB=BB*(B1>0):ELSE:B1=12:BB=64*(RND>.98):ENDIF:REM -(RND<.02)
+121 T=T+1:S=S-4:IF S<0:S=15:ENDIF:-M.PM+640+24,PM+640+26,78:-M.PM+640+128+24,PM+640+128+26,78
+122 IF BB:B1=B1-2:M.ADR(B$)+B1,PM+640+24+64-64*BB,2:BB=BB*(B1>0):ELSE:B1=12:BB=(RND>.98)-(RND<.02):ENDIF 
 125 END.
-135 IF F=-1:IF H=103:F=0:ELSE:H=H-4:END.:END.
-137 IF F=1: IF H=135:F=0:ELSE:H=H+4:END.:END.
-150 POS.16,1:?#6;T;
+130 IF CC:C1=C1-4+A:M.ADR(C$)+C1,PM+640+256+24,4-A:CC=C1>0:ELSE:C1=16:CC=RND>.95:ENDIF
+131 -M.PM+640+256+24,PM+640+256+28-A,78
+135 IF F=-1:IF H=103:F=0:ELSE:H=H-8:END.:END.
+137 IF F=1: IF H=135:F=0:ELSE:H=H+8:END.:END.
+150 POS.16,1:?#6;T;"   "
 
 180 REPEAT: UNTIL PEEK(54283)>95:POKE 54277,S: POKE HPOSP0,H
-200 UNTIL T<1 : END
+200 UNTIL T<1 : POS.16,1:?#6;"0   ";:END
 
 999 REM INITIALIZE PM
 1210 PMBASE=54279:REM                       Player-missile base pointer
@@ -30,13 +33,17 @@
 1270 POKE PMBASE,RAMTOP-4:REM              Tell ANTIC where PM RAM is
 1280 PM=(RAMTOP-4)*256:REM                     Keep track of PM RAM address
 1290 POKE 559,46:REM                     Enable PM DMA with 2-line res
-1291 DP.PMW,257: REM DOUBLE WIDTH
+1291 DP.PMW,257: DP.PMW+2,257:REM DOUBLE WIDTH
 1300 POKE GRACTL,3:REM                      Enable PM display
-1310 POKE HPOSP0,145:REM                    Declare horizontal position
+1310 POKE HPOSP0,165:REM                    Declare horizontal position
 1311 POKE HPOSP0+1,100:REM                    Declare horizontal position
+1312 POKE HPOSP0+2,135:REM                    Declare horizontal position
+1313 POKE HPOSP0+3,118:REM                    Declare horizontal position
 2100 FOR I=PM TO PM+1023: REM store player in unused RAM
 2110 POKE I,0: NEXT I
-2120 FOR I=PM+513+70 TO PM+513+70+11: POKE I,255: NEXT I
+2120 FOR I=PM+513+70 TO PM+513+70+11: POKE I,I MOD 256: NEXT I
 2180 POKE 704,88:REM                     Make the player pink
-2181 POKE 705,$80:REM                     Make the player pink
+2181 POKE 705,$80:REM                     Make the player blue
+2182 POKE 706,$80
+2183 POKE 707,88
 2200 RETURN
