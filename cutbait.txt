@@ -1,4 +1,4 @@
-9 G=0:R=PEEK(106):POKE106,R-8:GR.1:M.R*256,R*256+1,2047
+9 R=PEEK(106):POKE106,R-8:GR.1:POKE106,R:CLS
 20 SE.0,1,2
 35 REM MODIFY DISPLAY LIST
 40 FOR I=7 TO 18: READ A: POKE DPEEK(560)+I,A: N.I
@@ -15,7 +15,7 @@
 93 FOR I=1 TO 8: READ A: T$(I)=CHR$(A) : N.I: REM TREEBARK
 95 DATA 74,73,73,73,169,173,182,178
 97 M.224*256,(R-8)*256,1024:M.ADR(T$),(R-8)*256+3*8,8:POKE 756,R-8:GOSUB 1210
-98 ?#6;"nuts!","  high:";G:?#6;"time:"," score:":FOR X=0 TO 10:?#6;" ######      ######":N.X
+98 ?#6;"nuts!":?#6;"time:"," score:":FOR X=0 TO 10:?#6;" ######      ######":N.X
 100 L=1:F=1:S=16:H=104 :T=1001:BB=1:B1=12:CC=0:C1=16:SS=0:SC=0
 105 REPEAT:POKE HITCLR,1
 110 T=T-2:A=2*STRIG(0)
@@ -31,7 +31,7 @@
 140 P=PEEK(P0PL):IF P&8:SC=SC+1:-M.PM,PM+640+256+60,30:POS.17,1:?#6;SC; :ELSE: IF P&6 :L=L-1:END.:END.
 150 POS.5,1:?#6;T;"  ";
 180 REPEAT: UNTIL PEEK(54283)>95: POKE 54277,S
-200 UNTIL (T<1)!(L=0) :POS.8,6:?#6;"game";:POS.8,7:?#6;"over":IF SC>G:G=SC:END.:CLS:goto 98
+200 UNTIL (T<1)!(L=0) :POS.8,6:?#6;"game";:POS.8,7:?#6;"over":IF SC>G:G=SC:END.:END
 
 999 REM INITIALIZE PM
 1210 PMBASE=54279:REM                       Player-missile base pointer
