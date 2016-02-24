@@ -45,5 +45,21 @@ flags or variables
 	bird1 states, hpos, vpos
 	player hpos, tree (sprite mirror)
 	score, time
-	
+
+collisions http://www.atariarchives.org/c1bag/page188.php
+
+			Play0	Play1	Play2	Play3
+Player 0/Register 53260	-0-	2	4	8
+
+%% REPLAY SETUP
+1. SETUP MEMORY, PM GRAPHICS
+2. PUT MSG ON SCREEN: FIRE TO START, HOLD TO CLIMB, LEFT/RIGHT TO JUMP
+3. WAIT UNTIL FIRE
+4. DRAW SCREEN
+5. MAIN LOOP
+6. GAME OVER MESSAGE: UPDATE HIGH SCORE
+7. GOTO 2, 3 OR 4?
+
+
+
 	
