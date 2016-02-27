@@ -1,0 +1,65 @@
+favorite find: REPEAT: UNTIL PEEK(54283)>95 - avoides flicker. The >95 might have to be tuned.
+
+state design ideas
+
+variable to hold horizontal position
+	when stick left (or right)
+		change state var to move left or move right, set target position, swap sprite
+
+		test state var
+			if move left - dec hpos
+			else if move right - inc hpos
+		keep doing this until target position is achieved and reset state var
+		if reset then swap sprite
+		
+vertical position of birds and nuts
+	problem: when strig climb - vscroll the trees OK
+	also need to move birds and nuts down the screen
+	birds appear at top of screen and scroll down with climbing
+	nuts appear at top of screen and fall normally, faster with climbing?
+
+scrolling of sprite onto playfield
+	need top and bottom pointers
+	need position counter
+	in MOVE ADR(B$),PM+640+BV,10 do the following
+		ADR(B$) becomes ADR(B$)+top pointer
+		PM+640+BV stays same
+		10 becomes top-bottom pointer+2 BECAUSE WE ARE STEPPING BY 2
+	NEW DESIGN IDEA: only actively scroll down part of screen then just move sprite memory down the screen
+	
+	
+states
+	end of game
+	rest
+	climb
+	jumping left
+	jumping right
+	got a nut
+	hit a bird
+	there's a bird
+	there's a nut
+	
+flags or variables
+	nut state, hpos, vpos
+	bird0 states, hpos, vpos
+	bird1 states, hpos, vpos
+	player hpos, tree (sprite mirror)
+	score, time
+
+collisions http://www.atariarchives.org/c1bag/page188.php
+
+			Play0	Play1	Play2	Play3
+Player 0/Register 53260	-0-	2	4	8
+
+%% REPLAY SETUP
+1. SETUP MEMORY, PM GRAPHICS
+2. PUT MSG ON SCREEN: FIRE TO START, HOLD TO CLIMB, LEFT/RIGHT TO JUMP
+3. WAIT UNTIL FIRE
+4. DRAW SCREEN
+5. MAIN LOOP
+6. GAME OVER MESSAGE: UPDATE HIGH SCORE
+7. GOTO 2, 3 OR 4?
+
+
+
+	
