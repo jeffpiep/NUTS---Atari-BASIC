@@ -1,0 +1,5 @@
+Climb the trees, jump to gather acorns, but beware the blue jays! Earn points by climbing (press fire) and jumping left and right (move the joystick) to collect acorns, which only fall when you are climbing. The acorns are worth more the higher you climb, but there are more blue jays, too. The game is over when you run into a blue jay. Your high-score is recorded so you can try and beat it the next round. Grab the ATR here and play it on your favorite emulator (I use Altirra).
+
+Boot the ATR file with the Altirra emulator in NTSC video.
+
+For detailed description see http://jeffpiepmeier.blogspot.com/2016/02/nuts-atari-basic-10-liner-contest-2016.html
